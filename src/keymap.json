@@ -1,0 +1,835 @@
+[
+  {
+    "key": "AE01",
+    "scan": 2,
+    "vk": 49,
+    "unicode": [
+      49,
+      33,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0031",
+      "U0021",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AE02",
+    "scan": 3,
+    "vk": 50,
+    "unicode": [
+      50,
+      64,
+      8482,
+      8364
+    ],
+    "symbols": [
+      "U0032",
+      "U0040",
+      "U2122",
+      "U20AC"
+    ]
+  },
+  {
+    "key": "AE03",
+    "scan": 4,
+    "vk": 51,
+    "unicode": [
+      51,
+      35,
+      163,
+      8470
+    ],
+    "symbols": [
+      "U0033",
+      "U0023",
+      "U00A3",
+      "U2116"
+    ]
+  },
+  {
+    "key": "AE04",
+    "scan": 5,
+    "vk": 52,
+    "unicode": [
+      52,
+      36,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0034",
+      "U0024",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AE05",
+    "scan": 6,
+    "vk": 53,
+    "unicode": [
+      53,
+      37,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0035",
+      "U0025",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AE06",
+    "scan": 7,
+    "vk": 54,
+    "unicode": [
+      54,
+      94,
+      61441,
+      61440
+    ],
+    "symbols": [
+      "U0036",
+      "U005E",
+      "dead_circumflex",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AE07",
+    "scan": 8,
+    "vk": 55,
+    "unicode": [
+      55,
+      38,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0037",
+      "U0026",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AE08",
+    "scan": 9,
+    "vk": 56,
+    "unicode": [
+      56,
+      42,
+      8226,
+      176
+    ],
+    "symbols": [
+      "U0038",
+      "U002A",
+      "U2022",
+      "U00B0"
+    ]
+  },
+  {
+    "key": "AE09",
+    "scan": 10,
+    "vk": 57,
+    "unicode": [
+      57,
+      40,
+      8216,
+      61440
+    ],
+    "symbols": [
+      "U0039",
+      "U0028",
+      "U2018",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AE10",
+    "scan": 11,
+    "vk": 48,
+    "unicode": [
+      48,
+      41,
+      8217,
+      61440
+    ],
+    "symbols": [
+      "U0030",
+      "U0029",
+      "U2019",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AE11",
+    "scan": 12,
+    "vk": 189,
+    "unicode": [
+      45,
+      95,
+      8211,
+      8212
+    ],
+    "symbols": [
+      "U002D",
+      "U005F",
+      "U2013",
+      "U2014"
+    ]
+  },
+  {
+    "key": "AE12",
+    "scan": 13,
+    "vk": 187,
+    "unicode": [
+      61,
+      43,
+      8800,
+      177
+    ],
+    "symbols": [
+      "U003D",
+      "U002B",
+      "U2260",
+      "U00B1"
+    ]
+  },
+  {
+    "key": "AD01",
+    "scan": 16,
+    "vk": 81,
+    "unicode": [
+      113,
+      81,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0071",
+      "U0051",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AD02",
+    "scan": 17,
+    "vk": 87,
+    "unicode": [
+      119,
+      87,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0077",
+      "U0057",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AD03",
+    "scan": 18,
+    "vk": 69,
+    "unicode": [
+      101,
+      69,
+      61441,
+      61440
+    ],
+    "symbols": [
+      "U0065",
+      "U0045",
+      "dead_acute",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AD04",
+    "scan": 19,
+    "vk": 82,
+    "unicode": [
+      114,
+      82,
+      174,
+      61440
+    ],
+    "symbols": [
+      "U0072",
+      "U0052",
+      "U00AE",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AD05",
+    "scan": 20,
+    "vk": 84,
+    "unicode": [
+      116,
+      84,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0074",
+      "U0054",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AD06",
+    "scan": 21,
+    "vk": 89,
+    "unicode": [
+      121,
+      89,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0079",
+      "U0059",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AD07",
+    "scan": 22,
+    "vk": 85,
+    "unicode": [
+      117,
+      85,
+      252,
+      220
+    ],
+    "symbols": [
+      "U0075",
+      "U0055",
+      "U00FC",
+      "U00DC"
+    ]
+  },
+  {
+    "key": "AD08",
+    "scan": 23,
+    "vk": 73,
+    "unicode": [
+      105,
+      73,
+      305,
+      304
+    ],
+    "symbols": [
+      "U0069",
+      "U0049",
+      "U0131",
+      "U0130"
+    ]
+  },
+  {
+    "key": "AD09",
+    "scan": 24,
+    "vk": 79,
+    "unicode": [
+      111,
+      79,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U006F",
+      "U004F",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AD10",
+    "scan": 25,
+    "vk": 80,
+    "unicode": [
+      112,
+      80,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0070",
+      "U0050",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AD11",
+    "scan": 26,
+    "vk": 219,
+    "unicode": [
+      246,
+      214,
+      91,
+      123
+    ],
+    "symbols": [
+      "U00F6",
+      "U00D6",
+      "U005B",
+      "U007B"
+    ]
+  },
+  {
+    "key": "AD12",
+    "scan": 27,
+    "vk": 221,
+    "unicode": [
+      287,
+      286,
+      93,
+      125
+    ],
+    "symbols": [
+      "U011F",
+      "U011E",
+      "U005D",
+      "U007D"
+    ]
+  },
+  {
+    "key": "AC01",
+    "scan": 30,
+    "vk": 65,
+    "unicode": [
+      97,
+      65,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0061",
+      "U0041",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC02",
+    "scan": 31,
+    "vk": 83,
+    "unicode": [
+      115,
+      83,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0073",
+      "U0053",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC03",
+    "scan": 32,
+    "vk": 68,
+    "unicode": [
+      100,
+      68,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0064",
+      "U0044",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC04",
+    "scan": 33,
+    "vk": 70,
+    "unicode": [
+      102,
+      70,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0066",
+      "U0046",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC05",
+    "scan": 34,
+    "vk": 71,
+    "unicode": [
+      103,
+      71,
+      169,
+      61440
+    ],
+    "symbols": [
+      "U0067",
+      "U0047",
+      "U00A9",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC06",
+    "scan": 35,
+    "vk": 72,
+    "unicode": [
+      104,
+      72,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0068",
+      "U0048",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC07",
+    "scan": 36,
+    "vk": 74,
+    "unicode": [
+      106,
+      74,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U006A",
+      "U004A",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC08",
+    "scan": 37,
+    "vk": 75,
+    "unicode": [
+      107,
+      75,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U006B",
+      "U004B",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC09",
+    "scan": 38,
+    "vk": 76,
+    "unicode": [
+      108,
+      76,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U006C",
+      "U004C",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC10",
+    "scan": 39,
+    "vk": 186,
+    "unicode": [
+      351,
+      350,
+      8230,
+      61440
+    ],
+    "symbols": [
+      "U015F",
+      "U015E",
+      "U2026",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AC11",
+    "scan": 40,
+    "vk": 222,
+    "unicode": [
+      231,
+      199,
+      39,
+      96
+    ],
+    "symbols": [
+      "U00E7",
+      "U00C7",
+      "U0027",
+      "U0060"
+    ]
+  },
+  {
+    "key": "TLDE",
+    "scan": 41,
+    "vk": 192,
+    "unicode": [
+      8217,
+      34,
+      8216,
+      126
+    ],
+    "symbols": [
+      "U2019",
+      "U0022",
+      "U2018",
+      "U007E"
+    ]
+  },
+  {
+    "key": "BKSL",
+    "scan": 43,
+    "vk": 220,
+    "unicode": [
+      59,
+      58,
+      92,
+      124
+    ],
+    "symbols": [
+      "U003B",
+      "U003A",
+      "U005C",
+      "U007C"
+    ]
+  },
+  {
+    "key": "AB01",
+    "scan": 44,
+    "vk": 90,
+    "unicode": [
+      122,
+      90,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U007A",
+      "U005A",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AB02",
+    "scan": 45,
+    "vk": 88,
+    "unicode": [
+      120,
+      88,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0078",
+      "U0058",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AB03",
+    "scan": 46,
+    "vk": 67,
+    "unicode": [
+      99,
+      67,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0063",
+      "U0043",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AB04",
+    "scan": 47,
+    "vk": 86,
+    "unicode": [
+      118,
+      86,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0076",
+      "U0056",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AB05",
+    "scan": 48,
+    "vk": 66,
+    "unicode": [
+      98,
+      66,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U0062",
+      "U0042",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AB06",
+    "scan": 49,
+    "vk": 78,
+    "unicode": [
+      110,
+      78,
+      61441,
+      61440
+    ],
+    "symbols": [
+      "U006E",
+      "U004E",
+      "dead_tilde",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AB07",
+    "scan": 50,
+    "vk": 77,
+    "unicode": [
+      109,
+      77,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U006D",
+      "U004D",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "AB08",
+    "scan": 51,
+    "vk": 188,
+    "unicode": [
+      44,
+      8220,
+      60,
+      171
+    ],
+    "symbols": [
+      "U002C",
+      "U201C",
+      "U003C",
+      "U00AB"
+    ]
+  },
+  {
+    "key": "AB09",
+    "scan": 52,
+    "vk": 190,
+    "unicode": [
+      46,
+      8221,
+      62,
+      187
+    ],
+    "symbols": [
+      "U002E",
+      "U201D",
+      "U003E",
+      "U00BB"
+    ]
+  },
+  {
+    "key": "AB10",
+    "scan": 53,
+    "vk": 191,
+    "unicode": [
+      47,
+      63,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U002F",
+      "U003F",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "SPCE",
+    "scan": 57,
+    "vk": 32,
+    "unicode": [
+      32,
+      32,
+      160,
+      61440
+    ],
+    "symbols": [
+      "space",
+      "space",
+      "U00A0",
+      "NoSymbol"
+    ]
+  },
+  {
+    "key": "LSGT",
+    "scan": 86,
+    "vk": 226,
+    "unicode": [
+      92,
+      124,
+      61440,
+      61440
+    ],
+    "symbols": [
+      "U005C",
+      "U007C",
+      "NoSymbol",
+      "NoSymbol"
+    ]
+  }
+]

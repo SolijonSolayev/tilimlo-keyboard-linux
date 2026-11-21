@@ -1,0 +1,9 @@
+Validation: PASS (Windows host; Debian desktop runtime NOT tested)
+- Debian ar member structure, compressed tar archives and executable modes.
+- Payload MD5 checksums and UTF-8/LF text files.
+- All 49 physical key mappings match extracted Windows base/Shift/AltGr/Shift+AltGr tables.
+- Registry XML/LST: install, repeat install, remove, repeat remove and reinstall.
+- Atomic file update round trips and unrelated-layout collision detection.
+- Python package helper and post-removal script syntax.
+Pending on Debian: apt install/remove, xkb-data upgrade triggers, XKB compilation,
+GNOME/KDE/Xfce selection, X11/Wayland typing, Caps Lock and Compose behavior.
