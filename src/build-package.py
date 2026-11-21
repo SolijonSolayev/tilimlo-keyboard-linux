@@ -8,7 +8,7 @@ import tarfile
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / 'dist'
 OUT.mkdir(exist_ok=True)
-SRC = ROOT
+SRC = OUT / 'tilmoch-keyboard-1.0.0-preview1'
 SRC.mkdir(parents=True, exist_ok=True)
 data = json.loads((ROOT / 'windows-layout.json').read_text(encoding='utf-8'))
 
@@ -184,9 +184,6 @@ target=OUT/'tilmoch-keyboard_1.0.0~preview1_all.deb';target.write_bytes(deb)
 # Preserve portable build inputs. No Windows binaries are redistributed.
 for name in ('build-package.py','windows-layout.json'):
     (SRC/name).write_bytes((ROOT/name).read_bytes())
-# Source build uses same-directory inputs and an output directory beside them.
-portable=(SRC/'build-package.py').read_text(encoding='utf-8').replace("ROOT = Path(__file__).resolve().parent.parent\nOUT = ROOT / 'outputs'\nSRC = OUT / 'tilmoch-keyboard-1.0.0-preview1'", "ROOT = Path(__file__).resolve().parent\nOUT = ROOT / 'dist'\nOUT.mkdir(exist_ok=True)\nSRC = ROOT").replace("ROOT / 'windows-layout.json'", "ROOT / 'windows-layout.json'").replace("ROOT/'register-layout.py'", "ROOT/'register-layout.py'").replace("ROOT/name", "ROOT/name")
-(SRC/'build-package.py').write_text(portable,encoding='utf-8',newline='\n')
 (OUT/'tilmoch-keyboard-1.0.0-preview1-source.tar.gz').write_bytes(tar_gz([(SRC.name+'/'+p.name,p.read_bytes(),0o644) for p in sorted(SRC.iterdir()) if p.is_file()]))
 (OUT/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in (target,OUT/'tilmoch-keyboard-1.0.0-preview1-source.tar.gz')),encoding='ascii')
 print(target)

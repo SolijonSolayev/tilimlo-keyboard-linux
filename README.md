@@ -340,7 +340,7 @@ python3 build-package.py
 
 Natija: `dist/tilmoch-keyboard_1.0.0~preview1_all.deb`. Yig‘ish uchun Python 3.9 yoki yangirog‘i kerak; qo‘shimcha Python kutubxonasi talab qilinmaydi. Yig‘ish buyrug‘iga `sudo` kerak emas.
 
-Repozitoriydagi `src/` papkasidan ham `python3 build-package.py` bilan yig‘ish mumkin. Ushbu preview’da skript paket versiyasini o‘zidan oladi; buyrug‘ini bajarish versiyani avtomatik oshirmaydi.
+Repozitoriydagi `src/` papkasidan ham `python3 build-package.py` bilan yig‘ish mumkin. Hosil bo‘ladigan paket va manba arxivi `src/dist/` ichiga yoziladi; asl manba fayllari o‘zgarmaydi. `dist/`, `__pycache__/` va Python kesh fayllari Git’ga kiritilmaydi. Ushbu preview’da skript paket versiyasini o‘zidan oladi; buyrug‘ini bajarish versiyani avtomatik oshirmaydi.
 
 ### Fayllar va texnik ma’lumot
 
