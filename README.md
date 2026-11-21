@@ -1,8 +1,10 @@
-# Tilmoch — Linux uchun o‘zbekcha klaviatura
+# Tilimlo — Linux uchun o‘zbekcha klaviatura
 
-Tilmoch yangi o‘zbek lotin alifbosidagi **ö, ğ, ş, ç** harflarini klaviaturadan bevosita yozish imkonini beradi. Asosiy harflarning joylashuvi Windows uchun Tilmoch 1.0.0 bilan bir xil.
+Tilimlo yangi o‘zbek lotin alifbosidagi **ö, ğ, ş, ç** harflarini klaviaturadan bevosita yozish imkonini beradi. Tugmalar joylashuvi foydalanuvchi taqdim etgan Windows klaviatura jadvali asosida ko‘chirilgan.
 
-**Joriy versiya: `1.0.0~preview1` — sinov versiyasi.** Paket tuzilishi va 49 ta tugmaning Windows jadvaliga mosligi tekshirilgan. Debian’da o‘rnatish, klaviatura menyusida tanlash va amaliy yozish hali tekshirilmagan. Quyidagi ko‘rsatmalar shu sinovni bajarishga yordam beradi; moslik tasdiqlangan deb hisoblamang.
+Loyiha sayti: **[tilimlo.uz](https://tilimlo.uz)**.
+
+**Joriy versiya: `1.0.0~preview2` — sinov versiyasi.** Paket tuzilishi va 49 ta tugmaning Windows jadvaliga mosligi tekshirilgan. Debian’da o‘rnatish, klaviatura menyusida tanlash va amaliy yozish hali tekshirilmagan. Quyidagi ko‘rsatmalar shu sinovni bajarishga yordam beradi; moslik tasdiqlangan deb hisoblamang.
 
 ## Mundarija
 
@@ -26,7 +28,7 @@ Maqsadli tizimlar: **Debian 12/13, Ubuntu 22.04/24.04, Linux Mint va shu tizimla
 
 Paket `all` arxitekturasida: amd64 va arm64 uchun alohida fayl tanlash shart emas. U grafik dasturlardagi XKB klaviatura tartibini o‘rnatadi; qora ekranli Linux konsoli — **TTY** uchun klaviatura o‘rnatmaydi.
 
-**Bilish kerak:** bu alohida oynasi ochiladigan dastur emas. O‘rnatgandan keyin klaviatura sozlamalarida yangi yozuv paydo bo‘lishi kerak. U matnni tarjima qilmaydi va `sh`ni avtomatik `ş`ga almashtirmaydi. Ishlatish vaqtida internet, Tilmoch hisobi yoki MCP plugin kerak emas.
+**Bilish kerak:** bu alohida oynasi ochiladigan dastur emas. O‘rnatgandan keyin klaviatura sozlamalarida yangi yozuv paydo bo‘lishi kerak. U matnni tarjima qilmaydi va `sh`ni avtomatik `ş`ga almashtirmaydi. Ishlatish vaqtida internet, Tilimlo hisobi yoki MCP plugin kerak emas.
 
 ### Terminal nima va uni qanday ochaman?
 
@@ -40,39 +42,44 @@ Ikki usuldan **bittasini** tanlang.
 
 ### A usul — brauzer orqali
 
-1. [Tilmoch `.deb` paketini yuklab olish](https://github.com/SolijonSolayev/tilmoch-keyboard-linux/raw/refs/heads/main/downloads/tilmoch-keyboard_1.0.0%7Epreview1_all.deb) havolasini bosing.
-2. Fayl nomi **`tilmoch-keyboard_1.0.0~preview1_all.deb`** ekanini tekshiring.
+1. [Tilimlo `.deb` paketini yuklab olish](https://github.com/SolijonSolayev/tilimlo-keyboard-linux/raw/refs/heads/main/downloads/tilimlo-keyboard_1.0.0%7Epreview2_all.deb) havolasini bosing.
+2. Fayl nomi **`tilimlo-keyboard_1.0.0~preview2_all.deb`** ekanini tekshiring.
 3. Fayl menejerida yuklangan fayl joylashgan papkani oching. Odatda bu **Downloads / Yuklamalar** papkasi.
 4. Papkaning bo‘sh joyida o‘ng tugmani bosib **Open in Terminal / Terminalda ochish**ni tanlang, agar bunday band mavjud bo‘lsa.
 
 Papka nomi tizim tiliga qarab farq qilishi mumkin. Terminal o‘sha papkada ochilganini tekshirish uchun:
 
 ```bash
-ls -l ./tilmoch-keyboard_1.0.0~preview1_all.deb
+ls -l ./tilimlo-keyboard_1.0.0~preview2_all.deb
 ```
 
 Fayl nomi va hajmi chiqsa, keyingi bosqichga o‘ting. `No such file or directory` chiqsa, [muammolar bo‘limiga](#7-muammolarni-hal-qilish) qarang.
 
 ### B usul — terminal orqali
 
-Bu usul faylni uy papkangiz ichidagi `tilmoch-download` papkasiga saqlaydi. Buyruqlarni tartib bilan bajaring:
+Bu usul faylni uy papkangiz ichidagi `tilimlo-download` papkasiga saqlaydi. Buyruqlarni tartib bilan bajaring:
 
 ```bash
 sudo apt update
 sudo apt install wget
-mkdir -p "$HOME/tilmoch-download"
-cd "$HOME/tilmoch-download"
-wget -O 'tilmoch-keyboard_1.0.0~preview1_all.deb' 'https://github.com/SolijonSolayev/tilmoch-keyboard-linux/raw/refs/heads/main/downloads/tilmoch-keyboard_1.0.0%7Epreview1_all.deb'
+mkdir -p "$HOME/tilimlo-download"
+cd "$HOME/tilimlo-download"
+wget -O 'tilimlo-keyboard_1.0.0~preview2_all.deb' 'https://github.com/SolijonSolayev/tilimlo-keyboard-linux/raw/refs/heads/main/downloads/tilimlo-keyboard_1.0.0%7Epreview2_all.deb'
 ```
 
 Yuklash xatosiz tugashi kerak. Keyingi buyruqlarni shu terminalda bajaring.
 
 ## 3. O‘rnatish
 
+### Avvalgi nomdagi paket o‘rnatilgan bo‘lsa
+
+Agar oldingi sinov paketini `tilmoch-keyboard` nomi bilan o‘rnatgan bo‘lsangiz, avval boshqa klaviaturaga o‘ting, eski tartibni Input Sources’dan olib tashlang va `sudo apt remove tilmoch-keyboard`ni bajaring. So‘ng quyidagi yangi Tilimlo paketini o‘rnating. Yangi paket nomi `tilimlo-keyboard`, klaviatura identifikatori `tilimlo`.
+
+
 Paket joylashgan papkada quyidagini bajaring:
 
 ```bash
-sudo apt install ./tilmoch-keyboard_1.0.0~preview1_all.deb
+sudo apt install ./tilimlo-keyboard_1.0.0~preview2_all.deb
 ```
 
 `./` belgilarini qoldiring: ular APT’ga fayl joriy papkada ekanini bildiradi. Tasdiqlash so‘ralsa, ekrandagi ko‘rsatmaga amal qiling. Paket `xkb-data` va `python3`ga bog‘liq; yetishmasa, APT ularni ham o‘rnatishni taklif qiladi.
@@ -80,14 +87,14 @@ sudo apt install ./tilmoch-keyboard_1.0.0~preview1_all.deb
 O‘rnatilganini tekshiring:
 
 ```bash
-dpkg-query -W -f='${Status}\n${Version}\n' tilmoch-keyboard
+dpkg-query -W -f='${Status}\n${Version}\n' tilimlo-keyboard
 ```
 
 Kutiladigan natija:
 
 ```text
 install ok installed
-1.0.0~preview1
+1.0.0~preview2
 ```
 
 **Ochiq hujjatlarni saqlang, seansdan chiqing — Log Out — va qayta kiring.** Odatda butun kompyuterni qayta yoqish shart emas. Klaviaturani tanlash uchun keyingi bosqich ham zarur: o‘rnatish uni avtomatik faol qilmaydi.
@@ -100,15 +107,15 @@ Ish stolingizga mos yo‘lni tanlang. Menyu nomlari tizim versiyasi va tiliga qa
 echo "$XDG_CURRENT_DESKTOP"
 ```
 
-**Mavjud English/US yoki boshqa klaviaturangizni saqlang.** Tilmoch’ni qo‘shimcha tartib sifatida qo‘shing, shunda ular orasida almashishingiz mumkin.
+**Mavjud English/US yoki boshqa klaviaturangizni saqlang.** Tilimlo’ni qo‘shimcha tartib sifatida qo‘shing, shunda ular orasida almashishingiz mumkin.
 
 ### GNOME / Ubuntu’ning odatiy ish stoli
 
 1. **Settings → Keyboard → Input Sources**ni oching. Ba’zi versiyalarda bu **Region & Language → Input Sources** ichida bo‘ladi.
 2. **+ / Add Input Source**ni bosing.
-3. `Uzbek` yoki `Tilmoch` deb qidiring. Kerak bo‘lsa **Other** yoki uch nuqtali qo‘shimcha ro‘yxatni oching.
-4. **Uzbek (Tilmoch, new Latin)**ni tanlab, **Add**ni bosing.
-5. Yuqori paneldagi til/klaviatura belgisidan Tilmoch’ni tanlang. GNOME’da odatda **Super + Space** keyingi tartibga o‘tadi; Super — Windows logotipli tugma.
+3. `Uzbek` yoki `Tilimlo` deb qidiring. Kerak bo‘lsa **Other** yoki uch nuqtali qo‘shimcha ro‘yxatni oching.
+4. **Uzbek (Tilimlo, new Latin)**ni tanlab, **Add**ni bosing.
+5. Yuqori paneldagi til/klaviatura belgisidan Tilimlo’ni tanlang. GNOME’da odatda **Super + Space** keyingi tartibga o‘tadi; Super — Windows logotipli tugma.
 
 Ro‘yxatda ko‘rinmasa, [7-bo‘limdagi GNOME muqobil usulidan](#gnomeda-royxatga-qoshishning-muqobil-usuli) foydalaning.
 
@@ -117,24 +124,24 @@ Ro‘yxatda ko‘rinmasa, [7-bo‘limdagi GNOME muqobil usulidan](#gnomeda-royxa
 1. **System Settings**ni oching va `Keyboard` deb qidiring.
 2. **Keyboard → Layouts**ga o‘ting. Eski versiyalarda **Input Devices → Keyboard → Layouts** bo‘lishi mumkin.
 3. **Configure layouts**ni yoqing, **Add**ni bosing.
-4. **Uzbek (Tilmoch, new Latin)**ni topib qo‘shing va **Apply**ni bosing.
-5. Paneldagi klaviatura indikatoridan Tilmoch’ni tanlang. Almashish tugmasini shu sozlamalarning o‘zida tanlashingiz mumkin.
+4. **Uzbek (Tilimlo, new Latin)**ni topib qo‘shing va **Apply**ni bosing.
+5. Paneldagi klaviatura indikatoridan Tilimlo’ni tanlang. Almashish tugmasini shu sozlamalarning o‘zida tanlashingiz mumkin.
 
 ### Xfce
 
 1. **Settings → Keyboard → Layout**ni oching.
 2. Qo‘lda tartib qo‘shish uchun zarur bo‘lsa **Use system defaults** belgisini olib tashlang.
-3. **Add** orqali **Uzbek (Tilmoch, new Latin)**ni qo‘shing.
+3. **Add** orqali **Uzbek (Tilimlo, new Latin)**ni qo‘shing.
 4. **Change layout option** yoki almashish sozlamasidan qulay tugmalarni tanlang.
-5. Tanlangan tugmalar yoki paneldagi klaviatura indikatoridan Tilmoch’ga o‘ting.
+5. Tanlangan tugmalar yoki paneldagi klaviatura indikatoridan Tilimlo’ga o‘ting.
 
 ### Linux Mint Cinnamon
 
-**System Settings → Keyboard → Layouts**ni oching. **+** orqali `Uzbek` yoki `Tilmoch`ni qidiring va yangi tartibni qo‘shing. Paneldagi klaviatura indikatoridan uni tanlang. Bu yo‘l Cinnamon versiyasiga qarab farq qilishi mumkin va hali amalda tekshirilmagan.
+**System Settings → Keyboard → Layouts**ni oching. **+** orqali `Uzbek` yoki `Tilimlo`ni qidiring va yangi tartibni qo‘shing. Paneldagi klaviatura indikatoridan uni tanlang. Bu yo‘l Cinnamon versiyasiga qarab farq qilishi mumkin va hali amalda tekshirilmagan.
 
 ## 5. Harflarni yozish va sinash
 
-Oddiy matn muharririni oching va faol klaviatura **Tilmoch** ekanini tekshiring. Quyidagi tugmalar nomlari **US inglizcha klaviaturada bosilgan belgilar** bo‘yicha berilgan:
+Oddiy matn muharririni oching va faol klaviatura **Tilimlo** ekanini tekshiring. Quyidagi tugmalar nomlari **US inglizcha klaviaturada bosilgan belgilar** bo‘yicha berilgan:
 
 | Klaviaturadagi tugma | Oddiy bosish | Shift bilan |
 |---|---|---|
@@ -201,28 +208,28 @@ Fayl menejerida kerakli papkani ochib, **Open in Terminal**dan foydalaning. Brau
 
 ### Administrator huquqi yoki parol bilan muammo
 
-`sudo` uchun o‘z Linux hisobingiz paroli kerak. Hisobingizda administrator huquqi bo‘lmasa, tizim administratoriga murojaat qiling. Bu GitHub yoki Tilmoch paroli emas.
+`sudo` uchun o‘z Linux hisobingiz paroli kerak. Hisobingizda administrator huquqi bo‘lmasa, tizim administratoriga murojaat qiling. Bu GitHub yoki Tilimlo paroli emas.
 
 ### O‘rnatilgan, lekin klaviatura ro‘yxatida yo‘q
 
 1. O‘rnatish holatini 3-bo‘limdagi `dpkg-query` bilan tekshiring.
 2. Seansdan chiqib qayta kiring; Settings’ni qayta oching.
-3. `Uzbek` va `Tilmoch`ni qidiring, **Other** bo‘limini ham tekshiring.
+3. `Uzbek` va `Tilimlo`ni qidiring, **Other** bo‘limini ham tekshiring.
 4. Layout fayli mavjudligini tekshiring:
 
 ```bash
-ls -l /usr/share/X11/xkb/symbols/tilmoch
+ls -l /usr/share/X11/xkb/symbols/tilimlo
 ```
 
 Fayl yo‘q bo‘lsa, paket joylashgan papkada qayta o‘rnating:
 
 ```bash
-sudo apt install --reinstall ./tilmoch-keyboard_1.0.0~preview1_all.deb
+sudo apt install --reinstall ./tilimlo-keyboard_1.0.0~preview2_all.deb
 ```
 
 #### GNOME’da ro‘yxatga qo‘shishning muqobil usuli
 
-Bu usul **faqat GNOME** uchun va uni oddiy foydalanuvchi terminalida, **sudo’siz** bajarish kerak. U mavjud klaviaturalar ro‘yxatini saqlab, Tilmoch’ni qo‘shadi. Butun blokni birga ko‘chirib bajaring:
+Bu usul **faqat GNOME** uchun va uni oddiy foydalanuvchi terminalida, **sudo’siz** bajarish kerak. U mavjud klaviaturalar ro‘yxatini saqlab, Tilimlo’ni qo‘shadi. Butun blokni birga ko‘chirib bajaring:
 
 ```bash
 python3 - <<'PY'
@@ -234,12 +241,12 @@ text = subprocess.check_output(
     ['gsettings', 'get', schema, 'sources'], text=True
 )
 sources = ast.literal_eval(text.removeprefix('@a(ss) ').strip())
-if ('xkb', 'tilmoch') not in sources:
-    sources.append(('xkb', 'tilmoch'))
+if ('xkb', 'tilimlo') not in sources:
+    sources.append(('xkb', 'tilimlo'))
     subprocess.run(
         ['gsettings', 'set', schema, 'sources', repr(sources)], check=True
     )
-print('Tilmoch ro‘yxatda. Paneldan yoki Super+Space bilan tanlang.')
+print('Tilimlo ro‘yxatda. Paneldan yoki Super+Space bilan tanlang.')
 PY
 ```
 
@@ -247,7 +254,7 @@ Kam ishlatiladigan manbalarni ko‘rsatish GNOME’ning rasmiy tavsiyalarida ham
 
 ### Tugmalar hali ham inglizcha belgilar chiqaryapti
 
-Paketni o‘rnatishning o‘zi yetmaydi. Paneldagi indikator orqali **Tilmoch**ni faol tanlang. Ochiq matn muharririni qayta ishga tushirib sinang. Boshqa klaviatura faol bo‘lsa, `[` tugmasi `ö` yozmaydi.
+Paketni o‘rnatishning o‘zi yetmaydi. Paneldagi indikator orqali **Tilimlo**ni faol tanlang. Ochiq matn muharririni qayta ishga tushirib sinang. Boshqa klaviatura faol bo‘lsa, `[` tugmasi `ö` yozmaydi.
 
 ### AltGr ishlamayapti
 
@@ -266,7 +273,7 @@ echo "$XDG_SESSION_TYPE"
 Faqat **X11** seansida vaqtinchalik sinash mumkin:
 
 ```bash
-setxkbmap -layout tilmoch
+setxkbmap -layout tilimlo
 ```
 
 Bu joriy faol tartibni almashtiradi, doimiy o‘rnatish usuli emas. US inglizcha tartibga vaqtinchalik qaytish:
@@ -281,14 +288,14 @@ Oddiy bosqichlar yordam bermasa, xatoni aniqlash uchun:
 
 ```bash
 sudo apt install libxkbcommon-tools
-xkbcli compile-keymap --layout tilmoch > /tmp/tilmoch.xkb
+xkbcli compile-keymap --layout tilimlo > /tmp/tilimlo.xkb
 ```
 
 Xato chiqmasa, layout shu tizimdagi XKB kompilyatorida yig‘ilgan bo‘ladi. Bu barcha ilovalarda terish tekshiruvi o‘rnini bosmaydi. Xato chiqsa, uning matnini saqlang.
 
 ### Muammo haqida xabar berish
 
-[GitHub Issues](https://github.com/SolijonSolayev/tilmoch-keyboard-linux/issues) orqali quyidagilarni yozing:
+[GitHub Issues](https://github.com/SolijonSolayev/tilimlo-keyboard-linux/issues) orqali quyidagilarni yozing:
 
 - distributiv va versiya;
 - ish stoli: GNOME, KDE, Xfce yoki Cinnamon;
@@ -302,43 +309,43 @@ Tizim haqidagi ma’lumotni quyidagilar bilan ko‘rish mumkin:
 cat /etc/os-release
 echo "$XDG_CURRENT_DESKTOP"
 echo "$XDG_SESSION_TYPE"
-dpkg-query -W tilmoch-keyboard
+dpkg-query -W tilimlo-keyboard
 ```
 
 ## 8. Yangilash va olib tashlash
 
 ### Yangilash
 
-Yangi `.deb` versiyasi chiqqanda uni yuklab oling va o‘sha fayl uchun `sudo apt install ./FAYL_NOMI.deb`ni bajaring. `FAYL_NOMI.deb` o‘rniga haqiqiy fayl nomini yozing. Bu loyiha hozircha APT repozitoriysi emas: oddiy `apt upgrade` yangi Tilmoch versiyasini GitHub’dan avtomatik yuklamaydi.
+Yangi `.deb` versiyasi chiqqanda uni yuklab oling va o‘sha fayl uchun `sudo apt install ./FAYL_NOMI.deb`ni bajaring. `FAYL_NOMI.deb` o‘rniga haqiqiy fayl nomini yozing. Bu loyiha hozircha APT repozitoriysi emas: oddiy `apt upgrade` yangi Tilimlo versiyasini GitHub’dan avtomatik yuklamaydi.
 
 ### Olib tashlash
 
 1. Faol klaviaturani English/US yoki boshqa ishlaydigan tartibga almashtiring.
-2. **Input Sources / Layouts**dan Tilmoch’ni olib tashlang.
+2. **Input Sources / Layouts**dan Tilimlo’ni olib tashlang.
 3. Terminalda bajaring:
 
 ```bash
-sudo apt remove tilmoch-keyboard
+sudo apt remove tilimlo-keyboard
 ```
 
 4. Seansdan chiqib qayta kiring.
 
-Paket boshqa foydalanuvchilarning shaxsiy klaviatura ro‘yxatini avtomatik tahrirlamaydi. Kompyuterda bir nechta hisob bo‘lsa, har bir hisobda Tilmoch yozuvini sozlamalardan olib tashlash kerak bo‘lishi mumkin.
+Paket boshqa foydalanuvchilarning shaxsiy klaviatura ro‘yxatini avtomatik tahrirlamaydi. Kompyuterda bir nechta hisob bo‘lsa, har bir hisobda Tilimlo yozuvini sozlamalardan olib tashlash kerak bo‘lishi mumkin.
 
 ## 9. Manba kodidan paket yig‘ish
 
 Bu bo‘lim dasturchilar uchun; oddiy foydalanishda shart emas.
 
-1. [Manba arxivini yuklab oling](https://github.com/SolijonSolayev/tilmoch-keyboard-linux/raw/refs/heads/main/downloads/tilmoch-keyboard-1.0.0-preview1-source.tar.gz).
+1. [Manba arxivini yuklab oling](https://github.com/SolijonSolayev/tilimlo-keyboard-linux/raw/refs/heads/main/downloads/tilimlo-keyboard-1.0.0-preview2-source.tar.gz).
 2. Arxiv joylashgan papkada quyidagilarni bajaring:
 
 ```bash
-tar -xzf tilmoch-keyboard-1.0.0-preview1-source.tar.gz
-cd tilmoch-keyboard-1.0.0-preview1
+tar -xzf tilimlo-keyboard-1.0.0-preview2-source.tar.gz
+cd tilimlo-keyboard-1.0.0-preview2
 python3 build-package.py
 ```
 
-Natija: `dist/tilmoch-keyboard_1.0.0~preview1_all.deb`. Yig‘ish uchun Python 3.9 yoki yangirog‘i kerak; qo‘shimcha Python kutubxonasi talab qilinmaydi. Yig‘ish buyrug‘iga `sudo` kerak emas.
+Natija: `dist/tilimlo-keyboard_1.0.0~preview2_all.deb`. Yig‘ish uchun Python 3.9 yoki yangirog‘i kerak; qo‘shimcha Python kutubxonasi talab qilinmaydi. Yig‘ish buyrug‘iga `sudo` kerak emas.
 
 Repozitoriydagi `src/` papkasidan ham `python3 build-package.py` bilan yig‘ish mumkin. Hosil bo‘ladigan paket va manba arxivi `src/dist/` ichiga yoziladi; asl manba fayllari o‘zgarmaydi. `dist/`, `__pycache__/` va Python kesh fayllari Git’ga kiritilmaydi. Ushbu preview’da skript paket versiyasini o‘zidan oladi; buyrug‘ini bajarish versiyani avtomatik oshirmaydi.
 
@@ -348,13 +355,13 @@ Repozitoriydagi `src/` papkasidan ham `python3 build-package.py` bilan yig‘ish
 |---|---|
 | [`downloads/`](downloads/) | Tayyor `.deb`, manba arxivi va nazorat summalari |
 | [`downloads/VALIDATION.txt`](downloads/VALIDATION.txt) | Bajarilgan tekshiruvlar va hali tekshirilmagan jihatlar |
-| [`src/tilmoch`](src/tilmoch) | Linux XKB tugmalar tartibi |
+| [`src/tilimlo`](src/tilimlo) | Linux XKB tugmalar tartibi |
 | [`src/keymap.json`](src/keymap.json) | Oddiy, Shift va AltGr qatlamlarining aniq xaritasi |
 | [`src/windows-layout.json`](src/windows-layout.json) | Windows jadvalidan olingan tugmalar ma’lumoti |
 | [`src/register-layout.py`](src/register-layout.py) | Klaviaturani tizim registrlariga qo‘shish kodi |
 | [`src/build-package.py`](src/build-package.py) | `.deb` paket yig‘ish skripti |
 
-Layout identifikatori: **`tilmoch`**; standart variant: **`basic`**. Paket `/usr/share/X11/xkb/symbols/tilmoch` faylini o‘rnatadi. Eski desktop’lar bilan ishlash uchun `evdev/base` XML va LST ro‘yxatlariga Tilmoch yozuvini qo‘shadi; olib tashlashda shu yozuv o‘chiriladi. `xkb-data` yangilanishidan keyin ro‘yxatni qayta qo‘shish uchun dpkg trigger ko‘zda tutilgan, ammo Debian’da amaliy sinovi hali bajarilmagan.
+Layout identifikatori: **`tilimlo`**; standart variant: **`basic`**. Paket `/usr/share/X11/xkb/symbols/tilimlo` faylini o‘rnatadi. Eski desktop’lar bilan ishlash uchun `evdev/base` XML va LST ro‘yxatlariga Tilimlo yozuvini qo‘shadi; olib tashlashda shu yozuv o‘chiriladi. `xkb-data` yangilanishidan keyin ro‘yxatni qayta qo‘shish uchun dpkg trigger ko‘zda tutilgan, ammo Debian’da amaliy sinovi hali bajarilmagan.
 
 Paket hozircha imzolanmagan va rasmiy Debian/Ubuntu repozitoriysiga kiritilmagan.
 

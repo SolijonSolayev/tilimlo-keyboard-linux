@@ -1,8 +1,8 @@
-// Recovered from Tilmoch Windows 1.0.0 keyboard tables.
+// Key positions recovered from the supplied Windows 1.0.0 keyboard tables.
 default partial alphanumeric_keys
 xkb_symbols "basic" {
     include "us(basic)"
-    name[Group1] = "Uzbek (Tilmoch, new Latin)";
+    name[Group1] = "Uzbek (Tilimlo, new Latin)";
     key <AE01> { type[Group1]="FOUR_LEVEL", [ U0031, U0021, NoSymbol, NoSymbol ] };
     key <AE02> { type[Group1]="FOUR_LEVEL", [ U0032, U0040, U2122, U20AC ] };
     key <AE03> { type[Group1]="FOUR_LEVEL", [ U0033, U0023, U00A3, U2116 ] };

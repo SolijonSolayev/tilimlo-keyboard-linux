@@ -8,12 +8,12 @@ import tempfile
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-START = '<!-- tilmoch-keyboard: begin -->'
-END = '<!-- tilmoch-keyboard: end -->'
+START = '<!-- tilimlo-keyboard: begin -->'
+END = '<!-- tilimlo-keyboard: end -->'
 ENTRY = '''<layout>
   <configItem>
-    <name>tilmoch</name><shortDescription>uz</shortDescription>
-    <description>Uzbek (Tilmoch, new Latin)</description>
+    <name>tilimlo</name><shortDescription>uz</shortDescription>
+    <description>Uzbek (Tilimlo, new Latin)</description>
     <languageList><iso639Id>uzb</iso639Id></languageList>
   </configItem>
 </layout>'''
@@ -22,8 +22,8 @@ def xml_content(text, install):
     text = re.sub(re.escape(START) + r'.*?' + re.escape(END) + r'\n?', '', text, flags=re.S)
     root = ET.fromstring(text)
     if install:
-        if root.find("./layoutList/layout/configItem/[name='tilmoch']") is not None:
-            raise RuntimeError('An unrelated tilmoch layout already exists')
+        if root.find("./layoutList/layout/configItem/[name='tilimlo']") is not None:
+            raise RuntimeError('An unrelated tilimlo layout already exists')
         if '</layoutList>' not in text:
             raise RuntimeError('Missing layoutList')
         text = text.replace('</layoutList>', START + '\n' + ENTRY + '\n' + END + '\n</layoutList>', 1)
@@ -31,11 +31,11 @@ def xml_content(text, install):
     return text
 
 def lst_content(text, install):
-    text = re.sub(r'^\s+tilmoch\s+Uzbek \(Tilmoch, new Latin\)\r?\n?', '', text, flags=re.M)
+    text = re.sub(r'^\s+tilimlo\s+Uzbek \(Tilimlo, new Latin\)\r?\n?', '', text, flags=re.M)
     if install:
-        if re.search(r'^\s+tilmoch\s', text, flags=re.M):
-            raise RuntimeError('An unrelated tilmoch layout already exists')
-        text, n = re.subn(r'(^!\s+layout\s*\n)', r'\1  tilmoch         Uzbek (Tilmoch, new Latin)\n', text, count=1, flags=re.M)
+        if re.search(r'^\s+tilimlo\s', text, flags=re.M):
+            raise RuntimeError('An unrelated tilimlo layout already exists')
+        text, n = re.subn(r'(^!\s+layout\s*\n)', r'\1  tilimlo         Uzbek (Tilimlo, new Latin)\n', text, count=1, flags=re.M)
         if n != 1:
             raise RuntimeError('Missing layout section')
     return text
@@ -48,7 +48,7 @@ def update(path, install):
     if new == old:
         return
     mode = stat.S_IMODE(path.stat().st_mode)
-    fd, temporary = tempfile.mkstemp(prefix='.tilmoch-', dir=path.parent)
+    fd, temporary = tempfile.mkstemp(prefix='.tilimlo-', dir=path.parent)
     try:
         with os.fdopen(fd, 'w', encoding='utf-8', newline='\n') as out:
             out.write(new)

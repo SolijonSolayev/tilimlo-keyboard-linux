@@ -8,7 +8,7 @@ import tarfile
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / 'dist'
 OUT.mkdir(exist_ok=True)
-SRC = OUT / 'tilmoch-keyboard-1.0.0-preview1'
+SRC = OUT / 'tilimlo-keyboard-1.0.0-preview2'
 SRC.mkdir(parents=True, exist_ok=True)
 data = json.loads((ROOT / 'windows-layout.json').read_text(encoding='utf-8'))
 
@@ -26,7 +26,7 @@ def keysym(c, vk):
     if c == 32: return 'space'
     return f'U{c:04X}'
 
-lines = ['// Recovered from Tilmoch Windows 1.0.0 keyboard tables.', 'default partial alphanumeric_keys', 'xkb_symbols "basic" {', '    include "us(basic)"', '    name[Group1] = "Uzbek (Tilmoch, new Latin)";']
+lines = ['// Key positions recovered from the supplied Windows 1.0.0 keyboard tables.', 'default partial alphanumeric_keys', 'xkb_symbols "basic" {', '    include "us(basic)"', '    name[Group1] = "Uzbek (Tilimlo, new Latin)";']
 mapping=[]
 for scan, name in sorted(scans.items()):
     vk=vk_scans[scan]
@@ -42,11 +42,13 @@ for scan, name in sorted(scans.items()):
     mapping.append({'key':name,'scan':scan,'vk':vk,'unicode':chars,'symbols':syms})
 lines.extend(['    include "level3(ralt_switch)"','};',''])
 symbols='\n'.join(lines)
-(SRC/'tilmoch').write_text(symbols,encoding='utf-8',newline='\n')
+(SRC/'tilimlo').write_text(symbols,encoding='utf-8',newline='\n')
 (SRC/'keymap.json').write_text(json.dumps(mapping,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 (SRC/'register-layout.py').write_bytes((ROOT/'register-layout.py').read_bytes())
 
-readme='''# Tilmoch Uzbek Keyboard — Debian preview 1
+readme='''# Tilimlo Uzbek Keyboard — Debian preview 2
+
+Website: https://tilimlo.uz
 
 Debian oilasi uchun XKB klaviatura tartibi. Paket arxitekturasi: all
 (amd64, arm64 va boshqa arxitekturalarda bir xil ma’lumot fayllari).
@@ -57,12 +59,12 @@ Bu distributivlarda amaliy sinov hali o‘tkazilmagan. Linux konsoli (TTY) uchun
 
 Yuklangan .deb joylashgan papkada:
 
-    sudo apt install ./tilmoch-keyboard_1.0.0~preview1_all.deb
+    sudo apt install ./tilimlo-keyboard_1.0.0~preview2_all.deb
 
 Seansdan chiqib, qayta kiring. Keyboard / Input Sources sozlamasida
-“Uzbek (Tilmoch, new Latin)” ni qo‘shing. Qidiruv: Uzbek yoki Tilmoch.
+“Uzbek (Tilimlo, new Latin)” ni qo‘shing. Qidiruv: Uzbek yoki Tilimlo.
 GNOME’da kerak bo‘lsa “Other” bo‘limini oching.
-Avval mavjud klaviaturangizni saqlab, Tilmoch’ni qo‘shimcha tartib sifatida sinang.
+Avval mavjud klaviaturangizni saqlab, Tilimlo’ni qo‘shimcha tartib sifatida sinang.
 
 GNOME’da ro‘yxatga qo‘shishning muqobil yo‘li (sudo ishlatmang):
 
@@ -71,14 +73,14 @@ GNOME’da ro‘yxatga qo‘shishning muqobil yo‘li (sudo ishlatmang):
     schema = 'org.gnome.desktop.input-sources'
     text = subprocess.check_output(['gsettings', 'get', schema, 'sources'], text=True)
     sources = ast.literal_eval(text.removeprefix('@a(ss) ').strip())
-    if ('xkb', 'tilmoch') not in sources:
-        sources.append(('xkb', 'tilmoch'))
+    if ('xkb', 'tilimlo') not in sources:
+        sources.append(('xkb', 'tilimlo'))
         subprocess.run(['gsettings', 'set', schema, 'sources', repr(sources)], check=True)
     PY
 
 X11’da tezkor yoqish (faqat shu seansning faol tartibini o‘zgartiradi):
 
-    setxkbmap -layout tilmoch
+    setxkbmap -layout tilimlo
 
 Wayland’da setxkbmap o‘rniga desktop’ning Input Sources sozlamasidan foydalaning.
 Desktop yangi tartibni ko‘rmasa, avval qayta kirilganini tekshiring.
@@ -109,34 +111,34 @@ Ulardan keyingi kompozitsiya Linux ilovasi/input method’iga bog‘liq;
 Windows’dagi barcha kompozitsiyalar bilan aynan bir xil ekani kafolatlanmaydi.
 Ctrl qisqartmalari Linux/XKB va ilova qoidalariga amal qiladi.
 Bu transliterator emas: “sh” avtomatik “ş”ga aylanmaydi.
-Internet yoki Tilmoch MCP kerak emas.
+Internet yoki Tilimlo MCP kerak emas.
 
 ## Olib tashlash
 
-Avval boshqa klaviaturaga o‘ting va Input Sources’dan Tilmoch’ni olib tashlang:
+Avval boshqa klaviaturaga o‘ting va Input Sources’dan Tilimlo’ni olib tashlang:
 
-    sudo apt remove tilmoch-keyboard
+    sudo apt remove tilimlo-keyboard
 
 So‘ng seansdan chiqib qayta kiring.
 
 ## Texnik ma’lumot
 
-Layout identifikatori: tilmoch; variant: basic.
-Paket o‘z symbols/tilmoch faylini o‘rnatadi. Eski X11/Wayland desktop’lar uchun
-evdev/base XML va LST registrlariga faqat Tilmoch yozuvini qo‘shadi; o‘chirganda
+Layout identifikatori: tilimlo; variant: basic.
+Paket o‘z symbols/tilimlo faylini o‘rnatadi. Eski X11/Wayland desktop’lar uchun
+evdev/base XML va LST registrlariga faqat Tilimlo yozuvini qo‘shadi; o‘chirganda
 shu yozuvni olib tashlaydi. xkb-data yangilanganda dpkg trigger uni qayta qo‘shadi.
 Paket foydalanuvchining faol klaviaturasini avtomatik almashtirmaydi.
 
 Linux’da paketni o‘rnatgandan keyin kompilyatsiya tekshiruvi:
 
     sudo apt install libxkbcommon-tools
-    xkbcli compile-keymap --layout tilmoch > /tmp/tilmoch.xkb
+    xkbcli compile-keymap --layout tilimlo > /tmp/tilimlo.xkb
 
 Manba fayllari va qayta yig‘ish skripti source arxivida.
 Paket imzolanmagan, ommaviy repozitoriyga joylanmagan.
 '''
 (SRC/'README.txt').write_text(readme,encoding='utf-8',newline='\n')
-(OUT/'Tilmoch-Debian-README.txt').write_text(readme,encoding='utf-8',newline='\n')
+(OUT/'Tilimlo-Debian-README.txt').write_text(readme,encoding='utf-8',newline='\n')
 
 def tar_gz(files):
     buf=io.BytesIO()
@@ -148,23 +150,24 @@ def tar_gz(files):
             tar.addfile(info,io.BytesIO(content))
     return gzip.compress(buf.getvalue(),mtime=0)
 
-payload=[('usr/share/X11/xkb/symbols/tilmoch',symbols,0o644),('usr/lib/tilmoch-keyboard/register-layout',(SRC/'register-layout.py').read_text(encoding='utf-8'),0o755),('usr/share/doc/tilmoch-keyboard/README',readme,0o644),('usr/share/doc/tilmoch-keyboard/keymap.json',(SRC/'keymap.json').read_text(encoding='utf-8'),0o644)]
-control='''Package: tilmoch-keyboard
-Version: 1.0.0~preview1
+payload=[('usr/share/X11/xkb/symbols/tilimlo',symbols,0o644),('usr/lib/tilimlo-keyboard/register-layout',(SRC/'register-layout.py').read_text(encoding='utf-8'),0o755),('usr/share/doc/tilimlo-keyboard/README',readme,0o644),('usr/share/doc/tilimlo-keyboard/keymap.json',(SRC/'keymap.json').read_text(encoding='utf-8'),0o644)]
+control='''Package: tilimlo-keyboard
+Version: 1.0.0~preview2
 Section: x11
 Priority: optional
 Architecture: all
-Maintainer: Tilmoch Keyboard Packaging <maintainer@example.invalid>
+Maintainer: Solijon Solayev <152319495+SolijonSolayev@users.noreply.github.com>
 Depends: xkb-data, python3 (>= 3.9)
-Description: Tilmoch Uzbek new Latin keyboard layout (preview)
- XKB layout preserving the Tilmoch Windows 1.0.0 physical key positions.
+Homepage: https://tilimlo.uz
+Description: Tilimlo Uzbek new Latin keyboard layout (preview)
+ XKB layout preserving the supplied Windows 1.0.0 physical key positions.
  Includes AltGr symbols and legacy desktop registry integration.
  Runtime validation on Debian desktop systems is still pending.
 '''
 postinst='''#!/bin/sh
 set -eu
 case "$1" in
-    configure|triggered) /usr/lib/tilmoch-keyboard/register-layout install ;;
+    configure|triggered) /usr/lib/tilimlo-keyboard/register-layout install ;;
 esac
 exit 0
 '''
@@ -180,11 +183,11 @@ def ar_entry(name,content):
     return header+content+(b'\n' if len(content)%2 else b'')
 
 deb=b'!<arch>\n'+b''.join(ar_entry(n,c) for n,c in [('debian-binary',b'2.0\n'),('control.tar.gz',tar_gz(metadata)),('data.tar.gz',tar_gz(payload))])
-target=OUT/'tilmoch-keyboard_1.0.0~preview1_all.deb';target.write_bytes(deb)
+target=OUT/'tilimlo-keyboard_1.0.0~preview2_all.deb';target.write_bytes(deb)
 # Preserve portable build inputs. No Windows binaries are redistributed.
 for name in ('build-package.py','windows-layout.json'):
     (SRC/name).write_bytes((ROOT/name).read_bytes())
-(OUT/'tilmoch-keyboard-1.0.0-preview1-source.tar.gz').write_bytes(tar_gz([(SRC.name+'/'+p.name,p.read_bytes(),0o644) for p in sorted(SRC.iterdir()) if p.is_file()]))
-(OUT/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in (target,OUT/'tilmoch-keyboard-1.0.0-preview1-source.tar.gz')),encoding='ascii')
+(OUT/'tilimlo-keyboard-1.0.0-preview2-source.tar.gz').write_bytes(tar_gz([(SRC.name+'/'+p.name,p.read_bytes(),0o644) for p in sorted(SRC.iterdir()) if p.is_file()]))
+(OUT/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in (target,OUT/'tilimlo-keyboard-1.0.0-preview2-source.tar.gz')),encoding='ascii')
 print(target)
 print('Mapped physical keys:',len(mapping))
