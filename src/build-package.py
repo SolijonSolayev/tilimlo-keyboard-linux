@@ -164,7 +164,10 @@ def tar_gz(files):
             info=tarfile.TarInfo('./'+name);info.size=len(content);info.mode=mode;info.mtime=0
             info.uid=info.gid=0;info.uname=info.gname='root'
             tar.addfile(info,io.BytesIO(content))
-    return gzip.compress(buf.getvalue(),mtime=0)
+    compressed = gzip.compress(buf.getvalue(),mtime=0)
+    # Python/zlib versions may emit a platform-specific gzip OS byte.
+    # Normalize it so Windows and Linux builds have the same header.
+    return compressed[:9] + b'\xff' + compressed[10:]
 
 payload=[('usr/share/X11/xkb/symbols/tilimlo',symbols,0o644),('usr/lib/tilimlo-keyboard/register-layout',(SRC/'register-layout.py').read_text(encoding='utf-8'),0o755),('usr/share/doc/tilimlo-keyboard/README',readme,0o644),('usr/share/doc/tilimlo-keyboard/keymap.json',(SRC/'keymap.json').read_text(encoding='utf-8'),0o644)]
 control='''Package: tilimlo-keyboard

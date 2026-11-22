@@ -1,2 +1,2 @@
-449a06ce14ee533fa5f56ec760c5d02a002209232c5379e268f2ba435142220e  tilimlo-keyboard_1.0.0~preview3_all.deb
-5643918a17e41d3a749697717a2972ef2c32d5fdcd1107eec153180f7dc08c08  tilimlo-keyboard-1.0.0-preview3-source.tar.gz
+2336c7c549ccfe5c0cad1a7e47e8a5304bdbc93e106145fd7b48bea000d0d2ec  tilimlo-keyboard_1.0.0~preview3_all.deb
+68551f8f2e2c8b298d9401fb1e6d7cdc50a1e89fbfb021be41d1e6cc63b06697  tilimlo-keyboard-1.0.0-preview3-source.tar.gz
