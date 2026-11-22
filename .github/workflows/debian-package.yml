@@ -1,0 +1,58 @@
+name: Debian package validation
+on:
+  push:
+    paths: ['src/**', '.github/workflows/debian-package.yml']
+  pull_request:
+    paths: ['src/**', '.github/workflows/debian-package.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        debian: [bookworm, trixie]
+    container: debian:${{ matrix.debian }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install test tools
+        run: |
+          apt-get update
+          apt-get install -y python3 xkb-data libxkbcommon-tools
+      - name: Build package
+        run: python3 src/build-package.py
+      - name: Fresh install and compile XKB
+        run: |
+          set -eu
+          test ! -d /usr/lib/tilimlo-keyboard
+          dpkg-deb --info src/dist/tilimlo-keyboard_1.0.0~preview3_all.deb
+          apt-get install -y ./src/dist/tilimlo-keyboard_1.0.0~preview3_all.deb
+          test -x /usr/lib/tilimlo-keyboard/register-layout
+          xkbcli compile-keymap --layout tilimlo > /tmp/tilimlo.xkb
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          root = ET.parse('/usr/share/X11/xkb/rules/evdev.xml').getroot()
+          assert len(root.findall("./layoutList/layout/configItem/[name='tilimlo']")) == 1
+          assert Path('/tmp/tilimlo.xkb').stat().st_size > 0
+          PY
+      - name: Reinstall and trigger registry refresh
+        run: |
+          set -eu
+          apt-get install --reinstall -y ./src/dist/tilimlo-keyboard_1.0.0~preview3_all.deb
+          apt-get install --reinstall -y xkb-data
+          dpkg --configure -a
+          xkbcli compile-keymap --layout tilimlo > /tmp/tilimlo.xkb
+      - name: Remove package and verify cleanup
+        run: |
+          set -eu
+          apt-get remove -y tilimlo-keyboard
+          test ! -e /usr/share/X11/xkb/symbols/tilimlo
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in ('evdev.xml', 'base.xml', 'evdev.lst', 'base.lst'):
+              p = Path('/usr/share/X11/xkb/rules') / name
+              if p.exists():
+                  assert 'Uzbek (Tilimlo, new Latin)' not in p.read_text()
+          PY

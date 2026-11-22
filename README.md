@@ -4,7 +4,7 @@ Tilimlo yangi o‘zbek lotin alifbosidagi **ö, ğ, ş, ç** harflarini klaviatu
 
 Loyiha sayti: **[tilimlo.uz](https://tilimlo.uz)**.
 
-**Joriy versiya: `1.0.0~preview2` — sinov versiyasi.** Paket tuzilishi va 49 ta tugmaning Windows jadvaliga mosligi tekshirilgan. Debian’da o‘rnatish, klaviatura menyusida tanlash va amaliy yozish hali tekshirilmagan. Quyidagi ko‘rsatmalar shu sinovni bajarishga yordam beradi; moslik tasdiqlangan deb hisoblamang.
+**Joriy versiya: `1.0.0~preview3` — sinov versiyasi.** Paket tuzilishi va 49 ta tugmaning Windows jadvaliga mosligi tekshirilgan. Debian’da o‘rnatish, klaviatura menyusida tanlash va amaliy yozish hali tekshirilmagan. Quyidagi ko‘rsatmalar shu sinovni bajarishga yordam beradi; moslik tasdiqlangan deb hisoblamang.
 
 ## Mundarija
 
@@ -42,15 +42,15 @@ Ikki usuldan **bittasini** tanlang.
 
 ### A usul — brauzer orqali
 
-1. [Tilimlo `.deb` paketini yuklab olish](https://github.com/SolijonSolayev/tilimlo-keyboard-linux/raw/refs/heads/main/downloads/tilimlo-keyboard_1.0.0%7Epreview2_all.deb) havolasini bosing.
-2. Fayl nomi **`tilimlo-keyboard_1.0.0~preview2_all.deb`** ekanini tekshiring.
+1. [Tilimlo `.deb` paketini yuklab olish](https://github.com/SolijonSolayev/tilimlo-keyboard-linux/raw/refs/heads/main/downloads/tilimlo-keyboard_1.0.0%7Epreview3_all.deb) havolasini bosing.
+2. Fayl nomi **`tilimlo-keyboard_1.0.0~preview3_all.deb`** ekanini tekshiring.
 3. Fayl menejerida yuklangan fayl joylashgan papkani oching. Odatda bu **Downloads / Yuklamalar** papkasi.
 4. Papkaning bo‘sh joyida o‘ng tugmani bosib **Open in Terminal / Terminalda ochish**ni tanlang, agar bunday band mavjud bo‘lsa.
 
 Papka nomi tizim tiliga qarab farq qilishi mumkin. Terminal o‘sha papkada ochilganini tekshirish uchun:
 
 ```bash
-ls -l ./tilimlo-keyboard_1.0.0~preview2_all.deb
+ls -l ./tilimlo-keyboard_1.0.0~preview3_all.deb
 ```
 
 Fayl nomi va hajmi chiqsa, keyingi bosqichga o‘ting. `No such file or directory` chiqsa, [muammolar bo‘limiga](#7-muammolarni-hal-qilish) qarang.
@@ -64,12 +64,19 @@ sudo apt update
 sudo apt install wget
 mkdir -p "$HOME/tilimlo-download"
 cd "$HOME/tilimlo-download"
-wget -O 'tilimlo-keyboard_1.0.0~preview2_all.deb' 'https://github.com/SolijonSolayev/tilimlo-keyboard-linux/raw/refs/heads/main/downloads/tilimlo-keyboard_1.0.0%7Epreview2_all.deb'
+wget -O 'tilimlo-keyboard_1.0.0~preview3_all.deb' 'https://github.com/SolijonSolayev/tilimlo-keyboard-linux/raw/refs/heads/main/downloads/tilimlo-keyboard_1.0.0%7Epreview3_all.deb'
 ```
 
 Yuklash xatosiz tugashi kerak. Keyingi buyruqlarni shu terminalda bajaring.
 
 ## 3. O‘rnatish
+
+### Kali’da preview2 o‘rnatilmagan bo‘lsa
+
+`cannot create ... register-layout.dpkg-new ... No such file or directory` xatosi preview2 paketida papka yozuvlari yetishmaganidan kelib chiqqan. Bu preview3’da tuzatildi. Preview2’ni qayta ishlatmang: yangi `.deb`ni yuklab, quyidagi odatiy o‘rnatish buyrug‘ini bajaring. Papkalarni qo‘lda yaratish shart emas.
+
+`_apt ... Permission denied` ogohlantirishi boshqa masala: APT foydalanuvchining uy papkasidagi faylni cheklangan `_apt` hisobi bilan o‘qiy olmaganini bildiradi. Bu yuqoridagi dpkg xatosining sababi emas. Uy papkangiz huquqlarini o‘zgartirish kerak emas.
+
 
 ### Avvalgi nomdagi paket o‘rnatilgan bo‘lsa
 
@@ -79,7 +86,7 @@ Agar oldingi sinov paketini `tilmoch-keyboard` nomi bilan o‘rnatgan bo‘lsang
 Paket joylashgan papkada quyidagini bajaring:
 
 ```bash
-sudo apt install ./tilimlo-keyboard_1.0.0~preview2_all.deb
+sudo apt install ./tilimlo-keyboard_1.0.0~preview3_all.deb
 ```
 
 `./` belgilarini qoldiring: ular APT’ga fayl joriy papkada ekanini bildiradi. Tasdiqlash so‘ralsa, ekrandagi ko‘rsatmaga amal qiling. Paket `xkb-data` va `python3`ga bog‘liq; yetishmasa, APT ularni ham o‘rnatishni taklif qiladi.
@@ -94,7 +101,7 @@ Kutiladigan natija:
 
 ```text
 install ok installed
-1.0.0~preview2
+1.0.0~preview3
 ```
 
 **Ochiq hujjatlarni saqlang, seansdan chiqing — Log Out — va qayta kiring.** Odatda butun kompyuterni qayta yoqish shart emas. Klaviaturani tanlash uchun keyingi bosqich ham zarur: o‘rnatish uni avtomatik faol qilmaydi.
@@ -224,7 +231,7 @@ ls -l /usr/share/X11/xkb/symbols/tilimlo
 Fayl yo‘q bo‘lsa, paket joylashgan papkada qayta o‘rnating:
 
 ```bash
-sudo apt install --reinstall ./tilimlo-keyboard_1.0.0~preview2_all.deb
+sudo apt install --reinstall ./tilimlo-keyboard_1.0.0~preview3_all.deb
 ```
 
 #### GNOME’da ro‘yxatga qo‘shishning muqobil usuli
@@ -336,16 +343,16 @@ Paket boshqa foydalanuvchilarning shaxsiy klaviatura ro‘yxatini avtomatik tahr
 
 Bu bo‘lim dasturchilar uchun; oddiy foydalanishda shart emas.
 
-1. [Manba arxivini yuklab oling](https://github.com/SolijonSolayev/tilimlo-keyboard-linux/raw/refs/heads/main/downloads/tilimlo-keyboard-1.0.0-preview2-source.tar.gz).
+1. [Manba arxivini yuklab oling](https://github.com/SolijonSolayev/tilimlo-keyboard-linux/raw/refs/heads/main/downloads/tilimlo-keyboard-1.0.0-preview3-source.tar.gz).
 2. Arxiv joylashgan papkada quyidagilarni bajaring:
 
 ```bash
-tar -xzf tilimlo-keyboard-1.0.0-preview2-source.tar.gz
-cd tilimlo-keyboard-1.0.0-preview2
+tar -xzf tilimlo-keyboard-1.0.0-preview3-source.tar.gz
+cd tilimlo-keyboard-1.0.0-preview3
 python3 build-package.py
 ```
 
-Natija: `dist/tilimlo-keyboard_1.0.0~preview2_all.deb`. Yig‘ish uchun Python 3.9 yoki yangirog‘i kerak; qo‘shimcha Python kutubxonasi talab qilinmaydi. Yig‘ish buyrug‘iga `sudo` kerak emas.
+Natija: `dist/tilimlo-keyboard_1.0.0~preview3_all.deb`. Yig‘ish uchun Python 3.9 yoki yangirog‘i kerak; qo‘shimcha Python kutubxonasi talab qilinmaydi. Yig‘ish buyrug‘iga `sudo` kerak emas.
 
 Repozitoriydagi `src/` papkasidan ham `python3 build-package.py` bilan yig‘ish mumkin. Hosil bo‘ladigan paket va manba arxivi `src/dist/` ichiga yoziladi; asl manba fayllari o‘zgarmaydi. `dist/`, `__pycache__/` va Python kesh fayllari Git’ga kiritilmaydi. Ushbu preview’da skript paket versiyasini o‘zidan oladi; buyrug‘ini bajarish versiyani avtomatik oshirmaydi.
 

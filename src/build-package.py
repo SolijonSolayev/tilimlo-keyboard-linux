@@ -8,7 +8,7 @@ import tarfile
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / 'dist'
 OUT.mkdir(exist_ok=True)
-SRC = OUT / 'tilimlo-keyboard-1.0.0-preview2'
+SRC = OUT / 'tilimlo-keyboard-1.0.0-preview3'
 SRC.mkdir(parents=True, exist_ok=True)
 data = json.loads((ROOT / 'windows-layout.json').read_text(encoding='utf-8'))
 
@@ -46,7 +46,7 @@ symbols='\n'.join(lines)
 (SRC/'keymap.json').write_text(json.dumps(mapping,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 (SRC/'register-layout.py').write_bytes((ROOT/'register-layout.py').read_bytes())
 
-readme='''# Tilimlo Uzbek Keyboard — Debian preview 2
+readme='''# Tilimlo Uzbek Keyboard — Debian preview 3
 
 Website: https://tilimlo.uz
 
@@ -59,7 +59,7 @@ Bu distributivlarda amaliy sinov hali o‘tkazilmagan. Linux konsoli (TTY) uchun
 
 Yuklangan .deb joylashgan papkada:
 
-    sudo apt install ./tilimlo-keyboard_1.0.0~preview2_all.deb
+    sudo apt install ./tilimlo-keyboard_1.0.0~preview3_all.deb
 
 Seansdan chiqib, qayta kiring. Keyboard / Input Sources sozlamasida
 “Uzbek (Tilimlo, new Latin)” ni qo‘shing. Qidiruv: Uzbek yoki Tilimlo.
@@ -143,6 +143,22 @@ Paket imzolanmagan, ommaviy repozitoriyga joylanmagan.
 def tar_gz(files):
     buf=io.BytesIO()
     with tarfile.open(fileobj=buf,mode='w',format=tarfile.USTAR_FORMAT) as tar:
+        # dpkg needs directory members before files in those directories.
+        # Fresh systems do not already have our package-specific directories.
+        directories = set()
+        for name, _, _ in files:
+            parent = Path(name).parent
+            while str(parent) != '.':
+                directories.add(parent.as_posix())
+                parent = parent.parent
+        for name in sorted(directories, key=lambda p: (p.count('/'), p)):
+            info = tarfile.TarInfo('./' + name + '/')
+            info.type = tarfile.DIRTYPE
+            info.mode = 0o755
+            info.mtime = 0
+            info.uid = info.gid = 0
+            info.uname = info.gname = 'root'
+            tar.addfile(info)
         for name, content, mode in files:
             content=content.encode() if isinstance(content,str) else content
             info=tarfile.TarInfo('./'+name);info.size=len(content);info.mode=mode;info.mtime=0
@@ -152,7 +168,7 @@ def tar_gz(files):
 
 payload=[('usr/share/X11/xkb/symbols/tilimlo',symbols,0o644),('usr/lib/tilimlo-keyboard/register-layout',(SRC/'register-layout.py').read_text(encoding='utf-8'),0o755),('usr/share/doc/tilimlo-keyboard/README',readme,0o644),('usr/share/doc/tilimlo-keyboard/keymap.json',(SRC/'keymap.json').read_text(encoding='utf-8'),0o644)]
 control='''Package: tilimlo-keyboard
-Version: 1.0.0~preview2
+Version: 1.0.0~preview3
 Section: x11
 Priority: optional
 Architecture: all
@@ -183,11 +199,11 @@ def ar_entry(name,content):
     return header+content+(b'\n' if len(content)%2 else b'')
 
 deb=b'!<arch>\n'+b''.join(ar_entry(n,c) for n,c in [('debian-binary',b'2.0\n'),('control.tar.gz',tar_gz(metadata)),('data.tar.gz',tar_gz(payload))])
-target=OUT/'tilimlo-keyboard_1.0.0~preview2_all.deb';target.write_bytes(deb)
+target=OUT/'tilimlo-keyboard_1.0.0~preview3_all.deb';target.write_bytes(deb)
 # Preserve portable build inputs. No Windows binaries are redistributed.
 for name in ('build-package.py','windows-layout.json'):
     (SRC/name).write_bytes((ROOT/name).read_bytes())
-(OUT/'tilimlo-keyboard-1.0.0-preview2-source.tar.gz').write_bytes(tar_gz([(SRC.name+'/'+p.name,p.read_bytes(),0o644) for p in sorted(SRC.iterdir()) if p.is_file()]))
-(OUT/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in (target,OUT/'tilimlo-keyboard-1.0.0-preview2-source.tar.gz')),encoding='ascii')
+(OUT/'tilimlo-keyboard-1.0.0-preview3-source.tar.gz').write_bytes(tar_gz([(SRC.name+'/'+p.name,p.read_bytes(),0o644) for p in sorted(SRC.iterdir()) if p.is_file()]))
+(OUT/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in (target,OUT/'tilimlo-keyboard-1.0.0-preview3-source.tar.gz')),encoding='ascii')
 print(target)
 print('Mapped physical keys:',len(mapping))
