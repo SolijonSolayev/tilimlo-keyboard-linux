@@ -21,7 +21,9 @@ jobs:
           apt-get update
           apt-get install -y python3 xkb-data libxkbcommon-tools
       - name: Build package
-        run: python3 src/build-package.py
+        run: |
+          python3 src/build-package.py
+          cmp downloads/tilimlo-keyboard_1.0.0~preview3_all.deb src/dist/tilimlo-keyboard_1.0.0~preview3_all.deb
       - name: Fresh install and compile XKB
         run: |
           set -eu

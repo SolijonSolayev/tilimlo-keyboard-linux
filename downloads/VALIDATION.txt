@@ -1,9 +1,19 @@
-Validation: PASS (Windows host; Debian desktop runtime NOT tested)
-- Debian ar member structure, compressed tar archives and executable modes.
-- Payload MD5 checksums and UTF-8/LF text files.
-- All 49 physical key mappings match extracted Windows base/Shift/AltGr/Shift+AltGr tables.
-- Registry XML/LST: install, repeat install, remove, repeat remove and reinstall.
-- Atomic file update round trips and unrelated-layout collision detection.
-- Python package helper and post-removal script syntax.
-Pending on Debian: apt install/remove, xkb-data upgrade triggers, XKB compilation,
-GNOME/KDE/Xfce selection, X11/Wayland typing, Caps Lock and Compose behavior.
+Tilimlo 1.0.0~preview3 validation
+
+PASS: local Windows host checks
+- Parent directory entries precede every payload file, with 0755 modes.
+- Debian ar/tar structure, executable modes, MD5 checksums, UTF-8/LF files.
+- All 49 physical keys match the original Windows character layers.
+- Registry install/remove idempotence and unrelated-layout collision detection.
+- Source archive rebuild produces the identical .deb SHA-256.
+
+PASS: GitHub Actions Debian 12 Bookworm and Debian 13 Trixie containers
+- Fresh apt install without manually creating package directories.
+- xkbcli compile-keymap --layout tilimlo.
+- Registry XML contains exactly one Tilimlo layout.
+- Package reinstall and xkb-data reinstall/trigger refresh.
+- Package removal deletes its layout and registry entries.
+Run: https://github.com/SolijonSolayev/tilimlo-keyboard-linux/actions/runs/44973591545
+
+Not yet tested: graphical GNOME/KDE/Xfce selection, interactive typing,
+Caps Lock/Compose behavior in applications, or an actual Kali installation.

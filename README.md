@@ -4,7 +4,7 @@ Tilimlo yangi o‘zbek lotin alifbosidagi **ö, ğ, ş, ç** harflarini klaviatu
 
 Loyiha sayti: **[tilimlo.uz](https://tilimlo.uz)**.
 
-**Joriy versiya: `1.0.0~preview3` — sinov versiyasi.** Paket tuzilishi va 49 ta tugmaning Windows jadvaliga mosligi tekshirilgan. Debian’da o‘rnatish, klaviatura menyusida tanlash va amaliy yozish hali tekshirilmagan. Quyidagi ko‘rsatmalar shu sinovni bajarishga yordam beradi; moslik tasdiqlangan deb hisoblamang.
+**Joriy versiya: `1.0.0~preview3` — sinov versiyasi.** 49 ta tugmaning Windows jadvaliga mosligi tekshirilgan. Debian 12 (Bookworm) va Debian 13 (Trixie) konteynerlarida yangi o‘rnatish, XKB kompilyatsiyasi, qayta o‘rnatish, `xkb-data` yangilanishidan keyingi ro‘yxat va olib tashlash tekshiruvlari muvaffaqiyatli o‘tdi. Grafik ish stolida klaviatura tanlash va amaliy terish, jumladan Kali’da, hali tekshirilmagan. [Avtomatik sinovlar](https://github.com/SolijonSolayev/tilimlo-keyboard-linux/actions/workflows/debian-package.yml).
 
 ## Mundarija
 
@@ -24,7 +24,7 @@ Loyiha sayti: **[tilimlo.uz](https://tilimlo.uz)**.
 - Dastur o‘rnatish uchun administrator huquqi: odatda `sudo` orqali.
 - Paket va kerakli tizim bog‘liqliklarini yuklash uchun internet.
 
-Maqsadli tizimlar: **Debian 12/13, Ubuntu 22.04/24.04, Linux Mint va shu tizimlarga asoslangan distributivlar**. Bular hozircha sinov uchun mo‘ljallangan tizimlar ro‘yxati, tekshirilgan moslik ro‘yxati emas.
+Maqsadli tizimlar: **Debian 12/13, Ubuntu 22.04/24.04, Linux Mint va shu tizimlarga asoslangan distributivlar**. Debian 12/13 uchun paket o‘rnatilishi konteynerda tekshirilgan; bu ro‘yxatdagi barcha grafik ish stollarida moslik tasdiqlangan degani emas.
 
 Paket `all` arxitekturasida: amd64 va arm64 uchun alohida fayl tanlash shart emas. U grafik dasturlardagi XKB klaviatura tartibini o‘rnatadi; qora ekranli Linux konsoli — **TTY** uchun klaviatura o‘rnatmaydi.
 
@@ -368,7 +368,7 @@ Repozitoriydagi `src/` papkasidan ham `python3 build-package.py` bilan yig‘ish
 | [`src/register-layout.py`](src/register-layout.py) | Klaviaturani tizim registrlariga qo‘shish kodi |
 | [`src/build-package.py`](src/build-package.py) | `.deb` paket yig‘ish skripti |
 
-Layout identifikatori: **`tilimlo`**; standart variant: **`basic`**. Paket `/usr/share/X11/xkb/symbols/tilimlo` faylini o‘rnatadi. Eski desktop’lar bilan ishlash uchun `evdev/base` XML va LST ro‘yxatlariga Tilimlo yozuvini qo‘shadi; olib tashlashda shu yozuv o‘chiriladi. `xkb-data` yangilanishidan keyin ro‘yxatni qayta qo‘shish uchun dpkg trigger ko‘zda tutilgan, ammo Debian’da amaliy sinovi hali bajarilmagan.
+Layout identifikatori: **`tilimlo`**; standart variant: **`basic`**. Paket `/usr/share/X11/xkb/symbols/tilimlo` faylini o‘rnatadi. Eski desktop’lar bilan ishlash uchun `evdev/base` XML va LST ro‘yxatlariga Tilimlo yozuvini qo‘shadi; olib tashlashda shu yozuv o‘chiriladi. `xkb-data` yangilanishidan keyin ro‘yxatni qayta qo‘shish uchun dpkg trigger qo‘shilgan va Debian 12/13 konteynerlarida tekshirilgan.
 
 Paket hozircha imzolanmagan va rasmiy Debian/Ubuntu repozitoriysiga kiritilmagan.
 
